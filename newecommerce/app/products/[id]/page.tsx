@@ -1,11 +1,16 @@
 import NotFound from "@/app/not-found";
-import { products } from "@/app/product-data";
-export default function ProductDetailPage({
+
+ 
+export default async function ProductDetailPage({
   params,
 }: {
   params: { id: string };
 }) {
-  const product = products.find((p) => p.id === params.id);
+  const response = await fetch(
+    process.env.NEXT_PUBLIC_SITE_URL + "/api/products/" + params.id
+  );
+  const product = await response.json();
+
   if (!product) {
     return <NotFound />;
   }
@@ -13,7 +18,7 @@ export default function ProductDetailPage({
     <div className="container mx-auto p-8 flex glex-col md:flex-row">
       <div className="md:w-1/2 md:md-0 md:mr-8">
         <img
-          src={`/${product.imageUrl}`}
+          src={"/" + product.imageUrl}
           alt="Product image"
           className="w-full h-auto rounded-lg shadow-md"
         />
