@@ -2,7 +2,6 @@ import ProductsList from "../ProductsList";
 
 export const dynamic = "force-dynamic";
 
-console.log("full", process.env.NEXT_PUBLIC_SITE_URL + "/api/products");
 export default async function ProductsPage() {
   const response = await fetch(
     process.env.NEXT_PUBLIC_SITE_URL + "/api/products",

@@ -26,11 +26,8 @@ export default function ProductsList({
     );
 
     const updatedCartProducts = await response.json();
-    console.log("updatedCartProducts", updatedCartProducts);
     setCartProducts(updatedCartProducts);
   }
-
-  console.log(cartProducts);
 
   function productIsInCart(productId: string) {
     return cartProducts.some((cp) => cp.id === productId);
